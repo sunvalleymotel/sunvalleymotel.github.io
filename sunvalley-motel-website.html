@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sun Valley Motel & Suites — Phoenix, AZ</title>
+  <meta name="description" content="Sun Valley Motel offers comfortable rooms, free Wi-Fi, outdoor pool, free parking, and pet-friendly accommodations in Phoenix, AZ. Book direct for best rates." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☀️</text></svg>" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #fff; color: #1a1a1a; line-height: 1.6; }
+
+    /* ── NAV ── */
+    .nav {
+      background: #1a3a2a;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+    }
+    .nav-logo { color: #f5c842; font-size: 20px; font-weight: 600; text-decoration: none; }
+    .nav-logo small { color: rgba(255,255,255,0.7); font-size: 11px; display: block; letter-spacing: 2px; font-weight: 400; }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.85); font-size: 14px; text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: #f5c842; }
+    .nav-book-btn {
+      background: #f5c842;
+      color: #1a3a2a;
+      border: none;
+      padding: 9px 20px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-book-btn:hover { background: #ffd84d; }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: white; margin: 5px 0; transition: 0.3s; }
+    .mobile-menu { display: none; background: #1a3a2a; padding: 1rem 2rem; border-top: 1px solid rgba(255,255,255,0.1); }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a { display: block; color: rgba(255,255,255,0.85); text-decoration: none; padding: 8px 0; font-size: 15px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .mobile-menu a:hover { color: #f5c842; }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(160deg, #0d2418 0%, #1a3a2a 40%, #2d5a3d 100%);
+      padding: 4rem 2rem 5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23f5c842' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-content { position: relative; max-width: 700px; margin: 0 auto; }
+    .hero-eyebrow { color: #f5c842; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; }
+    .hero h1 { color: #fff; font-size: clamp(32px, 5vw, 52px); font-weight: 700; line-height: 1.1; }
+    .hero h1 em { color: #f5c842; font-style: normal; }
+    .hero-sub { color: rgba(255,255,255,0.75); font-size: 18px; margin-top: 12px; }
+    .hero-stars { color: #f5c842; font-size: 22px; margin-top: 10px; letter-spacing: 2px; }
+    .hero-badges {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+    .badge {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.9);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* ── BOOKING ── */
+    .booking-wrap { padding: 0 1.5rem; margin-top: -28px; position: relative; z-index: 10; max-width: 900px; margin-left: auto; margin-right: auto; }
+    .booking-box {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 14px;
+      padding: 1.75rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.14);
+    }
+    .booking-box h2 { font-size: 17px; font-weight: 600; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 8px; }
+    .booking-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; }
+    .field label { font-size: 12px; color: #666; display: block; margin-bottom: 5px; font-weight: 500; letter-spacing: 0.3px; }
+    .field input, .field select {
+      width: 100%;
+      padding: 9px 12px;
+      border: 1px solid #ddd;
+      border-radius: 7px;
+      font-size: 14px;
+      background: #fafafa;
+      color: #1a1a1a;
+      transition: border-color 0.2s;
+    }
+    .field input:focus, .field select:focus { outline: none; border-color: #1a3a2a; background: #fff; }
+    .book-cta-btn {
+      width: 100%;
+      margin-top: 1.1rem;
+      background: #1a3a2a;
+      color: #f5c842;
+      border: none;
+      padding: 13px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .book-cta-btn:hover { background: #2d5a3d; }
+    .avail-msg { display: none; border-radius: 8px; padding: 11px 14px; margin-top: 12px; font-size: 14px; text-align: center; }
+    .avail-msg.success { background: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; }
+    .avail-msg.error { background: #fdecea; color: #c62828; border: 1px solid #ef9a9a; }
+
+    /* ── SECTIONS ── */
+    .section { padding: 3.5rem 1.5rem; max-width: 1000px; margin: 0 auto; }
+    .section-title { font-size: clamp(24px, 3vw, 30px); font-weight: 700; text-align: center; margin-bottom: 6px; }
+    .section-sub { text-align: center; color: #666; font-size: 15px; margin-bottom: 2rem; }
+    .section-divider { border: none; border-top: 1px solid #eee; margin: 0; }
+    .bg-light { background: #f8f9f6; }
+
+    /* ── ROOMS ── */
+    .rooms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+    .room-card { border: 1px solid #e8e8e8; border-radius: 12px; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; }
+    .room-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,0.1); }
+    .room-img {
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 60px;
+      position: relative;
+    }
+    .room-img .room-img-label {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(0,0,0,0.55);
+      color: white;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    .room-img.r1 { background: linear-gradient(135deg, #c8e6c9, #a5d6a7); }
+    .room-img.r2 { background: linear-gradient(135deg, #fff9c4, #ffe082); }
+    .room-img.r3 { background: linear-gradient(135deg, #e1d5f7, #c5b3ee); }
+    .room-body { padding: 1.2rem; }
+    .room-name { font-size: 17px; font-weight: 600; }
+    .room-desc { font-size: 13px; color: #666; margin-top: 5px; line-height: 1.55; }
+    .room-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+    .room-tag { font-size: 11px; background: #f3f4f1; color: #555; padding: 3px 9px; border-radius: 4px; }
+    .room-price { font-size: 22px; font-weight: 700; color: #1a3a2a; margin-top: 12px; }
+    .room-price small { font-size: 14px; font-weight: 400; color: #888; }
+    .room-reserve-btn {
+      width: 100%;
+      margin-top: 10px;
+      background: transparent;
+      border: 1.5px solid #1a3a2a;
+      color: #1a3a2a;
+      padding: 9px;
+      border-radius: 7px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .room-reserve-btn:hover { background: #1a3a2a; color: #f5c842; }
+
+    /* ── AMENITIES ── */
+    .amenities-section { background: #f8f9f6; padding: 3.5rem 1.5rem; }
+    .amenities-inner { max-width: 1000px; margin: 0 auto; }
+    .amenities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 14px; }
+    .amenity-card {
+      background: #fff;
+      border: 1px solid #e8e8e8;
+      border-radius: 10px;
+      padding: 1.2rem;
+      text-align: center;
+      transition: box-shadow 0.2s;
+    }
+    .amenity-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+    .amenity-icon { font-size: 30px; color: #1a3a2a; margin-bottom: 8px; }
+    .amenity-name { font-size: 13px; font-weight: 600; }
+    .amenity-detail { font-size: 12px; color: #888; margin-top: 3px; }
+
+    /* ── GALLERY ── */
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .gallery-item {
+      aspect-ratio: 4/3;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 40px;
+      overflow: hidden;
+      position: relative;
+    }
+    .gallery-item .g-caption {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      background: rgba(0,0,0,0.35);
+      color: white;
+      border-radius: 4px;
+    }
+    .g1 { background: #c8e6c9; }
+    .g2 { background: #fff9c4; }
+    .g3 { background: #e3f2fd; }
+    .g4 { background: #f3e5f5; }
+    .g5 { background: #fce4ec; }
+    .g6 { background: #e0f2f1; }
+    .gallery-note { text-align: center; font-size: 13px; color: #999; margin-top: 12px; font-style: italic; }
+
+    /* ── REVIEWS ── */
+    .reviews-section { background: #f8f9f6; padding: 3.5rem 1.5rem; }
+    .reviews-inner { max-width: 1000px; margin: 0 auto; }
+    .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .review-card { background: #fff; border: 1px solid #e8e8e8; border-radius: 10px; padding: 1.2rem; }
+    .review-stars { color: #f5c842; font-size: 15px; }
+    .review-text { font-size: 13px; color: #555; margin-top: 8px; line-height: 1.65; font-style: italic; }
+    .reviewer { font-size: 13px; font-weight: 600; margin-top: 10px; color: #1a1a1a; }
+    .reviewer span { font-weight: 400; color: #888; }
+    .overall-rating { text-align: center; margin-bottom: 1.5rem; }
+    .overall-rating .big-num { font-size: 52px; font-weight: 700; color: #1a3a2a; line-height: 1; }
+    .overall-rating .big-stars { font-size: 24px; color: #f5c842; }
+    .overall-rating p { font-size: 13px; color: #888; margin-top: 4px; }
+
+    /* ── CONTACT ── */
+    .contact-box {
+      background: #1a3a2a;
+      border-radius: 14px;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    .contact-info-item { display: flex; gap: 12px; margin-bottom: 1.2rem; align-items: flex-start; }
+    .contact-icon { color: #f5c842; font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+    .contact-label { font-size: 12px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.5px; }
+    .contact-value { font-size: 14px; color: rgba(255,255,255,0.9); margin-top: 2px; }
+    .contact-value a { color: #f5c842; text-decoration: none; }
+    .map-box {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+    }
+    .map-box a { color: #f5c842; font-size: 13px; text-decoration: none; margin-top: 6px; display: block; }
+
+    /* ── FOOTER ── */
+    .footer { background: #0d1a11; color: rgba(255,255,255,0.5); padding: 2rem; text-align: center; font-size: 13px; }
+    .footer strong { color: #f5c842; font-size: 15px; }
+    .footer-links { display: flex; gap: 1.5rem; justify-content: center; margin: 10px 0; flex-wrap: wrap; }
+    .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    .footer-links a:hover { color: #f5c842; }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: #fff;
+      border-radius: 14px;
+      padding: 1.75rem;
+      width: 100%;
+      max-width: 420px;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+    .modal-header h3 { font-size: 18px; font-weight: 700; }
+    .modal-close { background: none; border: none; font-size: 22px; cursor: pointer; color: #888; line-height: 1; }
+    .modal-room-badge {
+      background: #e8f5e9;
+      color: #2e7d32;
+      font-size: 13px;
+      padding: 5px 12px;
+      border-radius: 6px;
+      margin-bottom: 1.2rem;
+      font-weight: 500;
+    }
+    .modal-fields { display: flex; flex-direction: column; gap: 12px; }
+    .modal-fields label { font-size: 12px; color: #666; font-weight: 500; display: block; margin-bottom: 4px; }
+    .modal-fields input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      border-radius: 7px;
+      font-size: 14px;
+      transition: border-color 0.2s;
+    }
+    .modal-fields input:focus { outline: none; border-color: #1a3a2a; }
+    .modal-date-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .modal-actions { display: flex; gap: 10px; margin-top: 1.2rem; }
+    .modal-cancel-btn { flex: 1; background: transparent; border: 1px solid #ddd; color: #666; padding: 10px; border-radius: 7px; cursor: pointer; font-size: 14px; }
+    .modal-submit-btn { flex: 2; background: #1a3a2a; color: #f5c842; border: none; padding: 10px; border-radius: 7px; font-weight: 600; cursor: pointer; font-size: 14px; transition: background 0.2s; }
+    .modal-submit-btn:hover { background: #2d5a3d; }
+    .modal-success { display: none; text-align: center; padding: 1.5rem 0; }
+    .modal-success .success-icon { font-size: 52px; }
+    .modal-success h4 { font-size: 20px; font-weight: 700; margin-top: 12px; }
+    .modal-success p { font-size: 14px; color: #666; margin-top: 6px; line-height: 1.6; }
+    .modal-done-btn { margin-top: 1.2rem; width: 100%; background: #1a3a2a; color: #f5c842; border: none; padding: 12px; border-radius: 7px; font-weight: 600; font-size: 15px; cursor: pointer; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .contact-box { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero { padding: 3rem 1.5rem 4rem; }
+    }
+    @media (max-width: 420px) {
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .booking-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <a href="#" class="nav-logo">☀️ Sun Valley<small>MOTEL &amp; SUITES</small></a>
+  <ul class="nav-links">
+    <li><a href="#rooms">Rooms</a></li>
+    <li><a href="#amenities">Amenities</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#booking" class="nav-book-btn">Book Now</a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#rooms" onclick="closeMobileMenu()">Rooms</a>
+  <a href="#amenities" onclick="closeMobileMenu()">Amenities</a>
+  <a href="#gallery" onclick="closeMobileMenu()">Gallery</a>
+  <a href="#reviews" onclick="closeMobileMenu()">Reviews</a>
+  <a href="#contact" onclick="closeMobileMenu()">Contact &amp; Location</a>
+  <a href="#booking" onclick="closeMobileMenu()" style="color:#f5c842; font-weight:600;">📅 Book Now</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" aria-label="Welcome banner">
+  <div class="hero-content">
+    <p class="hero-eyebrow">Phoenix, Arizona</p>
+    <h1>Your Home Away<br>from Home at <em>Sun Valley</em></h1>
+    <p class="hero-sub">Clean rooms · Friendly staff · Unbeatable value</p>
+    <div class="hero-stars" aria-label="5 stars">★★★★★</div>
+    <div class="hero-badges">
+      <span class="badge"><i class="ti ti-wifi" aria-hidden="true"></i> Free Wi-Fi</span>
+      <span class="badge"><i class="ti ti-swimming" aria-hidden="true"></i> Outdoor Pool</span>
+      <span class="badge"><i class="ti ti-car" aria-hidden="true"></i> Free Parking</span>
+      <span class="badge"><i class="ti ti-air-conditioning" aria-hidden="true"></i> A/C All Rooms</span>
+      <span class="badge"><i class="ti ti-paw" aria-hidden="true"></i> Pet Friendly</span>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING FORM -->
+<div style="background:#f8f9f6; padding-bottom: 2rem;">
+  <div class="booking-wrap" id="booking">
+    <div class="booking-box">
+      <h2><i class="ti ti-calendar-check" aria-hidden="true"></i> Check Availability &amp; Book Your Room</h2>
+      <div class="booking-grid">
+        <div class="field">
+          <label for="checkin">Check-in Date</label>
+          <input type="date" id="checkin" name="checkin" />
+        </div>
+        <div class="field">
+          <label for="checkout">Check-out Date</label>
+          <input type="date" id="checkout" name="checkout" />
+        </div>
+        <div class="field">
+          <label for="guests">Guests</label>
+          <select id="guests" name="guests">
+            <option>1 Adult</option>
+            <option>2 Adults</option>
+            <option>2 Adults + 1 Child</option>
+            <option>2 Adults + 2 Children</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="roomtype">Room Type</label>
+          <select id="roomtype" name="roomtype">
+            <option>Standard Room — $79/night</option>
+            <option>Deluxe Room — $109/night</option>
+            <option>King Suite — $149/night</option>
+          </select>
+        </div>
+      </div>
+      <button class="book-cta-btn" onclick="checkAvailability()">
+        <i class="ti ti-search" aria-hidden="true"></i> Check Availability
+      </button>
+      <div class="avail-msg" id="avail-msg" role="alert"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ROOMS -->
+<hr class="section-divider" />
+<section class="section" id="rooms" aria-labelledby="rooms-heading">
+  <h2 class="section-title" id="rooms-heading">Our Rooms</h2>
+  <p class="section-sub">Comfortable, clean, and thoughtfully furnished for every traveler</p>
+  <div class="rooms-grid">
+
+    <article class="room-card" aria-label="Standard Room">
+      <div class="room-img r1">🛏️<span class="room-img-label">Queen Bed</span></div>
+      <div class="room-body">
+        <div class="room-name">Standard Room</div>
+        <div class="room-desc">Everything you need for a comfortable stay — cozy queen bed, work desk, and a great night's sleep guaranteed.</div>
+        <div class="room-tags">
+          <span class="room-tag">Queen Bed</span>
+          <span class="room-tag">32" TV</span>
+          <span class="room-tag">Free Wi-Fi</span>
+          <span class="room-tag">A/C</span>
+          <span class="room-tag">Coffee Maker</span>
+        </div>
+        <div class="room-price">$79 <small>/ night</small></div>
+        <button class="room-reserve-btn" onclick="openModal('Standard Room', '$79/night')">Reserve This Room</button>
+      </div>
+    </article>
+
+    <article class="room-card" aria-label="Deluxe Room">
+      <div class="room-img r2">🌅<span class="room-img-label">Valley View</span></div>
+      <div class="room-body">
+        <div class="room-name">Deluxe Room</div>
+        <div class="room-desc">Spacious king bed with a stunning mountain view, mini fridge, and an upgraded bathroom with rainfall shower.</div>
+        <div class="room-tags">
+          <span class="room-tag">King Bed</span>
+          <span class="room-tag">Valley View</span>
+          <span class="room-tag">Mini Fridge</span>
+          <span class="room-tag">Safe</span>
+          <span class="room-tag">Rainfall Shower</span>
+        </div>
+        <div class="room-price">$109 <small>/ night</small></div>
+        <button class="room-reserve-btn" onclick="openModal('Deluxe Room', '$109/night')">Reserve This Room</button>
+      </div>
+    </article>
+
+    <article class="room-card" aria-label="King Suite">
+      <div class="room-img r3">✨<span class="room-img-label">Best Value</span></div>
+      <div class="room-body">
+        <div class="room-name">King Suite</div>
+        <div class="room-desc">Our most spacious option — separate living area, kitchenette, soaking tub, and panoramic valley views.</div>
+        <div class="room-tags">
+          <span class="room-tag">Living Area</span>
+          <span class="room-tag">Kitchenette</span>
+          <span class="room-tag">Soaking Tub</span>
+          <span class="room-tag">Panoramic View</span>
+        </div>
+        <div class="room-price">$149 <small>/ night</small></div>
+        <button class="room-reserve-btn" onclick="openModal('King Suite', '$149/night')">Reserve This Room</button>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- AMENITIES -->
+<section class="amenities-section" id="amenities" aria-labelledby="amenities-heading">
+  <div class="amenities-inner">
+    <h2 class="section-title" id="amenities-heading">Property Amenities</h2>
+    <p class="section-sub">Everything you need — all included, all on-site</p>
+    <div class="amenities-grid">
+      <div class="amenity-card">
+        <div class="amenity-icon"><i class="ti ti-wifi" aria-hidden="true"></i></div>
+        <div class="amenity-name">Free Wi-Fi</div>
+        <div class="amenity-detail">High-speed in every room</div>
+      </div>
+      <div class="amenity-card">
+        <div class="amenity-icon"><i class="ti ti-swimming" aria-hidden="true"></i></div>
+        <div class="amenity-name">Outdoor Pool</div>
+        <div class="amenity-detail">Open 7am – 10pm daily</div>
+      </div>
+      <div class="amenity-card">
+        <div class="amenity-icon"><i class="ti ti-car" aria-hidden="true"></i></div>
+        <div class="amenity-name">Free Parking</div>
+        <div class="amenity-detail">Ample on-site parking</div>
+      </div>
+      <div class="amenity-card">
+        <div class="amenity-icon"><i class="ti ti-coffee" aria-hidden="true"></i></div>
+        <div class="amenity-name">Breakfast</div>
+        <div class="amenity-detail">Continental 7–10am</div>
+      </div>
+      <div class="amenity-card">
+        <div class="amenity-icon"><i class="ti ti-air-conditioning" aria-hidden="true"></i></div>
+        <div class="amenity-name">Climate Control</div>
+        <div class="amenity-detail">A/C &amp; heating all rooms</div>
+      </div>
+      <div class="amenity-card">
+        <div class="amenity-icon"><i class="ti ti-paw" aria-hidden="true"></i></div>
+        <div class="amenity-name">Pet Friendly</div>
+        <div class="amenity-detail">Small pets welcome</div>
+      </div>
+      <div class="amenity-card">
+        <div class="amenity-icon"><i class="ti ti-washing-machine" aria-hidden="true"></i></div>
+        <div class="amenity-name">Laundry</div>
+        <div class="amenity-detail">Self-service on site</div>
+      </div>
+      <div class="amenity-card">
+        <div class="amenity-icon"><i class="ti ti-24-hours" aria-hidden="true"></i></div>
+        <div class="amenity-name">24/7 Front Desk</div>
+        <div class="amenity-detail">Always here to help</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<hr class="section-divider" />
+<section class="section" id="gallery" aria-labelledby="gallery-heading">
+  <h2 class="section-title" id="gallery-heading">Photo Gallery</h2>
+  <p class="section-sub">A peek at what awaits you</p>
+  <div class="gallery-grid">
+    <div class="gallery-item g1" role="img" aria-label="Poolside area">🌿<span class="g-caption">Poolside</span></div>
+    <div class="gallery-item g2" role="img" aria-label="Valley view">🌄<span class="g-caption">Valley View</span></div>
+    <div class="gallery-item g3" role="img" aria-label="Deluxe room">🛏️<span class="g-caption">Deluxe Room</span></div>
+    <div class="gallery-item g4" role="img" aria-label="King suite">✨<span class="g-caption">King Suite</span></div>
+    <div class="gallery-item g5" role="img" aria-label="Breakfast area">🍳<span class="g-caption">Breakfast Area</span></div>
+    <div class="gallery-item g6" role="img" aria-label="Outdoor pool">🏊<span class="g-caption">Outdoor Pool</span></div>
+  </div>
+  <p class="gallery-note">📷 Replace these with your real property photos for best results</p>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews-section" id="reviews" aria-labelledby="reviews-heading">
+  <div class="reviews-inner">
+    <h2 class="section-title" id="reviews-heading">Guest Reviews</h2>
+    <div class="overall-rating">
+      <div class="big-num">4.8</div>
+      <div class="big-stars">★★★★★</div>
+      <p>Based on 240+ verified guest reviews</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"Spotless rooms, incredibly friendly staff, and the pool was amazing. We'll definitely be back on our next trip through Phoenix!"</div>
+        <div class="reviewer">Sarah M. <span>— Phoenix, AZ</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"Best value motel we've found anywhere in the area. Comfortable beds, great A/C — absolutely perfect for our summer road trip."</div>
+        <div class="reviewer">James T. <span>— Los Angeles, CA</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★☆</div>
+        <div class="review-text">"Love that it's pet friendly! Our dog was very welcome. The suite was so spacious and the valley view from the window was gorgeous."</div>
+        <div class="reviewer">Maria L. <span>— Tucson, AZ</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT & LOCATION -->
+<hr class="section-divider" />
+<section class="section" id="contact" aria-labelledby="contact-heading">
+  <h2 class="section-title" id="contact-heading">Find Us</h2>
+  <p class="section-sub">Conveniently located with easy freeway access</p>
+  <div class="contact-box">
+    <div>
+      <div class="contact-info-item">
+        <i class="ti ti-map-pin contact-icon" aria-hidden="true"></i>
+        <div>
+          <div class="contact-label">Address</div>
+          <div class="contact-value">1234 Sun Valley Road<br>Phoenix, AZ 85001</div>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <i class="ti ti-phone contact-icon" aria-hidden="true"></i>
+        <div>
+          <div class="contact-label">Phone</div>
+          <div class="contact-value"><a href="tel:+16025550182">(602) 555-0182</a></div>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <i class="ti ti-mail contact-icon" aria-hidden="true"></i>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value"><a href="mailto:info@sunvalleymotel.com">info@sunvalleymotel.com</a></div>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <i class="ti ti-clock contact-icon" aria-hidden="true"></i>
+        <div>
+          <div class="contact-label">Check-in / Check-out</div>
+          <div class="contact-value">Check-in: 3:00 PM &nbsp;·&nbsp; Check-out: 11:00 AM</div>
+        </div>
+      </div>
+    </div>
+    <div class="map-box">
+      <span style="font-size:36px">🗺️</span>
+      <strong style="color:white; font-size:15px;">Sun Valley Motel</strong>
+      <span style="font-size:13px;">1234 Sun Valley Rd, Phoenix AZ 85001</span>
+      <a href="https://maps.google.com/?q=1234+Sun+Valley+Road+Phoenix+AZ" target="_blank" rel="noopener">
+        <i class="ti ti-external-link" aria-hidden="true"></i> Open in Google Maps
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <strong>☀️ Sun Valley Motel &amp; Suites</strong>
+  <div class="footer-links">
+    <a href="#rooms">Rooms</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+    <a href="tel:+16025550182">(602) 555-0182</a>
+  </div>
+  <p>&copy; 2026 Sun Valley Motel. All rights reserved. &nbsp;·&nbsp; 1234 Sun Valley Road, Phoenix, AZ 85001</p>
+</footer>
+
+<!-- BOOKING MODAL -->
+<div class="modal-overlay" id="booking-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal">
+    <div id="modal-form-section">
+      <div class="modal-header">
+        <h3 id="modal-title">Reserve Your Room</h3>
+        <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+      </div>
+      <div class="modal-room-badge" id="modal-room-badge"></div>
+      <div class="modal-fields">
+        <div>
+          <label for="m-name">Full Name *</label>
+          <input type="text" id="m-name" placeholder="John Smith" autocomplete="name" />
+        </div>
+        <div>
+          <label for="m-email">Email Address *</label>
+          <input type="email" id="m-email" placeholder="john@email.com" autocomplete="email" />
+        </div>
+        <div>
+          <label for="m-phone">Phone Number</label>
+          <input type="tel" id="m-phone" placeholder="(602) 555-0000" autocomplete="tel" />
+        </div>
+        <div class="modal-date-row">
+          <div>
+            <label for="m-checkin">Check-in *</label>
+            <input type="date" id="m-checkin" />
+          </div>
+          <div>
+            <label for="m-checkout">Check-out *</label>
+            <input type="date" id="m-checkout" />
+          </div>
+        </div>
+        <div>
+          <label for="m-requests">Special Requests (optional)</label>
+          <input type="text" id="m-requests" placeholder="e.g. ground floor, extra pillows..." />
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="modal-cancel-btn" onclick="closeModal()">Cancel</button>
+        <button class="modal-submit-btn" onclick="submitBooking()">
+          <i class="ti ti-check" aria-hidden="true"></i> Confirm Booking
+        </button>
+      </div>
+    </div>
+    <div class="modal-success" id="modal-success-section">
+      <div class="success-icon">✅</div>
+      <h4>Booking Confirmed!</h4>
+      <p>Thank you! We've received your reservation request.<br>A confirmation will be sent to your email shortly.<br><br>Questions? Call us at <strong>(602) 555-0182</strong></p>
+      <button class="modal-done-btn" onclick="closeModal()">Done</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Mobile menu
+  document.getElementById('hamburger').addEventListener('click', function() {
+    document.getElementById('mobile-menu').classList.toggle('open');
+  });
+  function closeMobileMenu() {
+    document.getElementById('mobile-menu').classList.remove('open');
+  }
+
+  // Set today as minimum date
+  var today = new Date().toISOString().split('T')[0];
+  ['checkin','checkout','m-checkin','m-checkout'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.min = today;
+  });
+
+  // Check availability
+  function checkAvailability() {
+    var ci = document.getElementById('checkin').value;
+    var co = document.getElementById('checkout').value;
+    var room = document.getElementById('roomtype').value;
+    var msg = document.getElementById('avail-msg');
+
+    if (!ci || !co) {
+      msg.className = 'avail-msg error';
+      msg.style.display = 'block';
+      msg.textContent = 'Please select both check-in and check-out dates.';
+      return;
+    }
+    if (new Date(co) <= new Date(ci)) {
+      msg.className = 'avail-msg error';
+      msg.style.display = 'block';
+      msg.textContent = 'Check-out date must be after your check-in date.';
+      return;
+    }
+    var nights = Math.round((new Date(co) - new Date(ci)) / 86400000);
+    msg.className = 'avail-msg success';
+    msg.style.display = 'block';
+    msg.innerHTML = '✓ Available! <strong>' + room + '</strong> · ' + nights + ' night' + (nights > 1 ? 's' : '') + '. Scroll down and click "Reserve This Room" to complete your booking.';
+  }
+
+  // Modal open/close
+  var selectedRoomName = '';
+  function openModal(room, price) {
+    selectedRoomName = room;
+    document.getElementById('modal-room-badge').innerHTML = '🛏️ ' + room + ' &nbsp;·&nbsp; ' + price;
+    var ci = document.getElementById('checkin').value;
+    var co = document.getElementById('checkout').value;
+    if (ci) document.getElementById('m-checkin').value = ci;
+    if (co) document.getElementById('m-checkout').value = co;
+    document.getElementById('modal-form-section').style.display = 'block';
+    document.getElementById('modal-success-section').style.display = 'none';
+    document.getElementById('booking-modal').classList.add('open');
+    document.getElementById('m-name').focus();
+  }
+  function closeModal() {
+    document.getElementById('booking-modal').classList.remove('open');
+  }
+  document.getElementById('booking-modal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  // Submit booking
+  function submitBooking() {
+    var name = document.getElementById('m-name').value.trim();
+    var email = document.getElementById('m-email').value.trim();
+    var ci = document.getElementById('m-checkin').value;
+    var co = document.getElementById('m-checkout').value;
+
+    if (!name) { alert('Please enter your full name.'); document.getElementById('m-name').focus(); return; }
+    if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); document.getElementById('m-email').focus(); return; }
+    if (!ci || !co) { alert('Please select check-in and check-out dates.'); return; }
+    if (new Date(co) <= new Date(ci)) { alert('Check-out must be after check-in.'); return; }
+
+    document.getElementById('modal-form-section').style.display = 'none';
+    document.getElementById('modal-success-section').style.display = 'block';
+  }
+</script>
+</body>
+</html>
