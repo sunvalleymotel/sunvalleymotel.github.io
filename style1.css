@@ -995,6 +995,7 @@ body {
   .booking-box {
     padding: 16px;
     border-radius: 18px;
+    overflow: hidden;
   }
 
   .booking-box h2 {
@@ -1015,9 +1016,23 @@ body {
 
   .field input,
   .field select {
-    height: 48px;
+    width: 100%;
+    box-sizing: border-box;
     font-size: 16px;
-    padding: 10px 12px;
+  }
+
+  .field input[type="date"] {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 44px;
+    min-height: 44px;
+    padding: 0 12px;
+    background: #fff;
+    color: #111;
+  }
+
+  .field input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 1;
   }
 
   .book-cta-btn {
