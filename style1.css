@@ -7,11 +7,11 @@
 }
 
 :root {
-  --primary-dark: #081f3a;
-  --primary: #0f2d52;
-  --primary-light: #1b4f8a;
-  --accent: #f5c842;
-  --accent-hover: #ffd84d;
+    --primary-dark: #081f3a;
+    --primary: #0f2d52;
+    --primary-light: #1b4f8a;
+    --accent: #f5c842;
+    --accent-hover: #ffd84d;
 }
 
 html {
@@ -328,9 +328,9 @@ body {
 }
 
 .avail-msg.success {
-  background: #d4edda;
-  color: #155724;
-  border: 1px solid #28a745;
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #28a745;
 }
 
 .avail-msg.error {
@@ -377,17 +377,15 @@ body {
     overflow: hidden;
     padding: 5rem 1.5rem;
     background:
-      radial-gradient(circle at top left,
-        rgba(245,200,66,0.12),
-        transparent 30%),
-      radial-gradient(circle at bottom right,
-        rgba(15,45,82,0.08),
-        transparent 35%),
-      linear-gradient(
-        180deg,
-        #ffffff 0%,
-        #f7fafc 100%
-      );
+        radial-gradient(circle at top left,
+            rgba(245, 200, 66, 0.12),
+            transparent 30%),
+        radial-gradient(circle at bottom right,
+            rgba(15, 45, 82, 0.08),
+            transparent 35%),
+        linear-gradient(180deg,
+            #ffffff 0%,
+            #f7fafc 100%);
 }
 
 .room-card {
@@ -396,14 +394,14 @@ body {
     border-radius: 18px;
     overflow: hidden;
     box-shadow:
-      0 10px 30px rgba(15,45,82,0.08);
+        0 10px 30px rgba(15, 45, 82, 0.08);
     transition: all 0.3s ease;
 }
 
 .room-card:hover {
     transform: translateY(-8px);
     box-shadow:
-      0 20px 40px rgba(15,45,82,0.15);
+        0 20px 40px rgba(15, 45, 82, 0.15);
 }
 
 .rooms-grid {
@@ -442,16 +440,16 @@ body {
 }
 
 .room-img-label {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  background: #0f2d52;
-  color: #f5c842;
-  font-size: 11px;
-  padding: 4px 9px;
-  border-radius: 4px;
-  font-weight: 600;
-  letter-spacing: 0.3px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: #0f2d52;
+    color: #f5c842;
+    font-size: 11px;
+    padding: 4px 9px;
+    border-radius: 4px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
 }
 
 .room-body {
@@ -962,8 +960,25 @@ body {
 @media (max-width: 680px) {
 
     .rooms-grid {
-    grid-template-columns: 1fr;
+        grid-template-columns: 1fr;
     }
+
+    .logo-title {
+        color: #f5c842;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 1;
+    }
+
+    .logo-text small {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 15px;
+        letter-spacing: 1px;
+        margin-top: 0px;
+        display: block;
+        font-weight: 400;
+    }
+
 
     .nav-links {
         display: none;
@@ -1002,7 +1017,7 @@ body {
         padding: 3rem 1.5rem 4rem;
     }
 
-      .hero h1 {
+    .hero h1 {
         font-size: 1.8rem;
         line-height: 1.2;
         max-width: 320px;
@@ -1018,7 +1033,7 @@ body {
     .nav {
         z-index: 2001;
     }
-    
-    
+
+
 
 }
