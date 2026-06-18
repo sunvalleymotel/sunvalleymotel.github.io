@@ -328,9 +328,9 @@ body {
 }
 
 .avail-msg.success {
-    background: #dbeafe;
-    color: #2563eb;
-    border: 1px solid #93c5fd;
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #28a745;
 }
 
 .avail-msg.error {
