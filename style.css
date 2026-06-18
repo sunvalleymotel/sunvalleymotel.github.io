@@ -925,6 +925,27 @@
       .rooms-grid {
         grid-template-columns: 1fr;
       }
+      .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    z-index: 2000;
+    background: #1a3a2a;
+    padding: 1rem 2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+  }
+
+  .mobile-menu.open {
+    display: block;
+  }
+
+  .nav {
+    z-index: 2001;
+  }
 
       .hero {
         padding: 3rem 1.5rem 4rem;
