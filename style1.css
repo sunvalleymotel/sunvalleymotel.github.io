@@ -42,7 +42,7 @@ body {
 .nav-logo {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
     text-decoration: none;
 }
 
@@ -58,16 +58,16 @@ body {
 
 .logo-title {
     color: #f5c842;
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 700;
     line-height: 1;
 }
 
 .logo-text small {
     color: rgba(255, 255, 255, 0.7);
-    font-size: 13px;
-    letter-spacing: 2px;
-    margin-top: 4px;
+    font-size: 15px;
+    letter-spacing: 1px;
+    margin-top: 0px;
     display: block;
     font-weight: 400;
 }
