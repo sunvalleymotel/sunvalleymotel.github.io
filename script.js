@@ -79,11 +79,22 @@ document.addEventListener('keydown', function (e) {
 });
 
 // Submit booking
+emailjs.init({
+  publicKey: "pFBz2UZ1vacg9Bb6_"
+});
+
+const EMAILJS_SERVICE_ID = "service_0jns43n";
+const GUEST_TEMPLATE_ID = "template_r1nc26k";
+const NOTIFICATION_TEMPLATE_ID = "template_3i6jn9v";
+
 function submitBooking() {
   var name = document.getElementById('m-name').value.trim();
   var email = document.getElementById('m-email').value.trim();
+  var phone = document.getElementById('m-phone').value.trim();
   var ci = document.getElementById('m-checkin').value;
   var co = document.getElementById('m-checkout').value;
+  var requests = document.getElementById('m-requests').value.trim();
+  var roomText = document.getElementById('modal-room-badge').innerText;
 
   if (!name) {
     alert('Please enter your full name.');
@@ -107,8 +118,28 @@ function submitBooking() {
     return;
   }
 
-  document.getElementById('modal-form-section').style.display = 'none';
-  document.getElementById('modal-success-section').style.display = 'block';
+  var params = {
+    guest_name: name,
+    guest_email: email,
+    guest_phone: phone,
+    room_type: roomText,
+    checkin: ci,
+    checkout: co,
+    special_requests: requests || 'None'
+  };
+
+  Promise.all([
+    emailjs.send(EMAILJS_SERVICE_ID, GUEST_TEMPLATE_ID, params),
+    emailjs.send(EMAILJS_SERVICE_ID, NOTIFICATION_TEMPLATE_ID, params)
+  ])
+  .then(function () {
+    document.getElementById('modal-form-section').style.display = 'none';
+    document.getElementById('modal-success-section').style.display = 'block';
+  })
+  .catch(function (error) {
+    console.error('EmailJS error:', error);
+    alert('Sorry, the booking email could not be sent right now.');
+  });
 }
 
 // Gallery lightbox
@@ -121,3 +152,21 @@ function closeGalleryImage() {
   document.getElementById('galleryModal').classList.remove('open');
   document.getElementById('galleryModalImg').src = '';
 }
+
+// Animation
+
+document.addEventListener('DOMContentLoaded', function () {
+  const roomsSection = document.querySelector('.rooms-section');
+  if (!roomsSection) return;
+
+  const observer = new IntersectionObserver(function (entries, obs) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        roomsSection.classList.add('is-visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.25 });
+
+  observer.observe(roomsSection);
+});
